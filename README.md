@@ -17,6 +17,9 @@ REST endpoints with role-based access control using @PreAuthorize. Each resource
 ### Services
 Business logic layer implementing domain rules such as room capacity validation per type (SIMPLE/DOUBLE/TRIPLE), reservation lifecycle management, and student-room affectation logic.
 
+### Repositories
+Spring Data JPA repositories extending JpaRepository for each entity, providing out-of-the-box CRUD operations with zero boilerplate. Custom query methods like findByCin and findByEmail leverage Spring Data's method name resolution to generate JPQL automatically, avoiding manual query writing while keeping the code readable and testable.
+
 ### DTOs
 Data Transfer Objects decouple the API contract from internal JPA entities. LoginRequest DTO handles authentication input validation, ensuring clean separation between transport and persistence layers.
 
@@ -41,7 +44,7 @@ Global @RestControllerAdvice returns structured JSON error responses:
 - University housing management (Foyers, Blocs, Chambres, Etudiants, Reservations)
 - Room reservation and release system by student CIN
 - Dashboard statistics endpoint
-- AOP-based request/error logging across all service methods
+- AOP-based request/error logging across all service layers
 - CORS configured for frontend integration
 
 ## API Docs
